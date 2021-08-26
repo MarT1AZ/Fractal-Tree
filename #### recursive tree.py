@@ -1,6 +1,6 @@
 #### recursive tree
 
-# NODE AND PATHFINDING
+
 import sys
 import math
 import random
@@ -255,45 +255,61 @@ while Bool_running:
         UpdateUI(Color_DarkGrey)
         
 
-        AddText("Fade",30,Color_lightpurple,40,50)
+        DrawUIbox(35,50,200,50,5,5)
+        AddText("Generate",35,Color_lightpurple,65,60)
+        if IsInRect(35,50,200,50,mx,my) and click[0] == 1 and ClickTimer >= ClickAllow:
+            ClickTimer = 0
+            DrawTree = True
 
         if String_TreeFadeColor == "Rainbow":
-            DrawUIboxGreen(40,100,150,40,3)
+            DrawUIboxGreen(40,110,150,40,3)
         else:
-            DrawUIbox(40,100,150,40,3,3)
-        AddText("Rainbow",20,Color_white,60,110)
+            DrawUIbox(40,110,150,40,3,3)
+        AddText("Rainbow",20,Color_white,60,120)
 
         if String_TreeFadeColor == "Red":
-            DrawUIboxGreen(40,150,150,40,3)
+            DrawUIboxGreen(40,160,150,40,3)
         else:
-            DrawUIbox(40,150,150,40,3,3)
-        AddText("Fade red",20,Color_white,60,160)
+            DrawUIbox(40,160,150,40,3,3)
+        AddText("Fade red",20,Color_white,60,170)
 
         if String_TreeFadeColor == "Green":
-            DrawUIboxGreen(40,200,150,40,3)
+            DrawUIboxGreen(40,210,150,40,3)
         else:
-            DrawUIbox(40,200,150,40,3,3)
-        AddText("Fade green",20,Color_white,60,210)
+            DrawUIbox(40,210,150,40,3,3)
+        AddText("Fade green",20,Color_white,60,220)
 
         if String_TreeFadeColor == "Blue":
-            DrawUIboxGreen(40,250,150,40,3)
+            DrawUIboxGreen(40,260,150,40,3)
         else:
-            DrawUIbox(40,250,150,40,3,3)
-        AddText("Fade blue",20,Color_white,60,260)
+            DrawUIbox(40,260,150,40,3,3)
+        AddText("Fade blue",20,Color_white,60,270)
 
         if click[0] == 1 and ClickTimer >= ClickAllow:
-            if IsInRect(40,100,150,40,mx,my):
+            if IsInRect(40,110,150,40,mx,my):
                 ClickTimer = 0
-                String_TreeFadeColor = "Rainbow"
-            elif IsInRect(40,150,150,40,mx,my):
+                if String_TreeFadeColor == "Rainbow":
+                    String_TreeFadeColor = "NotSet"
+                else:
+                    String_TreeFadeColor = "Rainbow"
+            elif IsInRect(40,160,150,40,mx,my):
                 ClickTimer = 0
-                String_TreeFadeColor = "Red"
-            elif IsInRect(40,200,150,40,mx,my):
+                if String_TreeFadeColor == "Red":
+                    String_TreeFadeColor = "NotSet"
+                else:
+                    String_TreeFadeColor = "Red"
+            elif IsInRect(40,210,150,40,mx,my):
                 ClickTimer = 0
-                String_TreeFadeColor = "Green"
-            elif IsInRect(40,250,150,40,mx,my):
+                if String_TreeFadeColor == "Green":
+                    String_TreeFadeColor = "NotSet"
+                else:
+                    String_TreeFadeColor = "Green"
+            elif IsInRect(40,260,150,40,mx,my):
                 ClickTimer = 0
-                String_TreeFadeColor = "Blue"
+                if String_TreeFadeColor == "Blue":
+                    String_TreeFadeColor = "NotSet"
+                else:
+                    String_TreeFadeColor = "Blue"
 
         AddText("Tree Type",30,Color_lightpurple,40,320)
 
@@ -374,11 +390,7 @@ while Bool_running:
             Xstartlenght = mx
             int_StartLenght = 20 + int((Xstartlenght - 40))
 
-        DrawUIbox(35,1150,200,70,5,5)
-        AddText("Generate",35,Color_lightpurple,65,1160)
-        if IsInRect(35,1150,200,70,mx,my) and click[0] == 1 and ClickTimer >= ClickAllow:
-            ClickTimer = 0
-            DrawTree = True
+        
 
 
         DrawLine(Color_cyan,285,0,285,ScreenHeight,30)
@@ -387,4 +399,3 @@ while Bool_running:
         
         ClickTimer += 1
         UpdateScreen()
-        
