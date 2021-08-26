@@ -95,7 +95,7 @@ def ReturnFadeColor(Value):
 
 ################################################################## screen setup
 #//
-ScreenWidth = 1900
+ScreenWidth = 2200
 
 ScreenHeight = 1200
 screen = pygame.display.set_mode((ScreenWidth,ScreenHeight))
@@ -126,6 +126,9 @@ def UpdateScreen():
 
 def UpdateUI(Color):
     DrawRect(Color,0,0,300,ScreenHeight)
+
+def UpdateUI2(Color):
+    DrawRect(Color,1900,0,2200,ScreenHeight)
 
 def ResetTree():
     DrawRect(Color_black,300,0,ScreenWidth,ScreenHeight)
@@ -223,14 +226,14 @@ def DrawDragBar(X,Y,W,H,Thickness):
 #//
 ################################################################ DRAW FUNCTION
 DrawTree = False
-int_NextLenght_percent = 50
-Xnextlenght = 140
-int_Recursion_level = 6
-Xrecursion = 100
-int_StartLenght = 100
-Xstartlenght = 120
-int_SplitAngle = 60
-Xangle = 80
+int_NextLenght_percent = 20
+Xnextlenght = 1980
+int_Recursion_level = 1
+Xrecursion = 1980
+int_StartLenght = 20
+Xstartlenght = 1980
+int_SplitAngle = 0
+Xangle = 1980
 Bool_running = True
 String_TreeFadeColor = "NotSet"
 ClickTimer = 1
@@ -253,147 +256,158 @@ while Bool_running:
             DrawTree = False
 
         UpdateUI(Color_DarkGrey)
+        UpdateUI2(Color_DarkGrey)
+        DrawLine(Color_cyan,285,0,285,ScreenHeight,30)
+        DrawLine(Color_cyan,1915,0,1915,ScreenHeight,30)
         
 
-        DrawUIbox(35,50,200,50,5,5)
-        AddText("Generate",35,Color_lightpurple,65,60)
-        if IsInRect(35,50,200,50,mx,my) and click[0] == 1 and ClickTimer >= ClickAllow:
-            ClickTimer = 0
-            DrawTree = True
-
+        
+        AddText("FADE",30,Color_lightpurple,40,80)
         if String_TreeFadeColor == "Rainbow":
-            DrawUIboxGreen(40,110,150,40,3)
+            DrawUIboxGreen(40,130,150,40,3)
         else:
-            DrawUIbox(40,110,150,40,3,3)
-        AddText("Rainbow",20,Color_white,60,120)
+            DrawUIbox(40,130,150,40,3,3)
+        AddText("Rainbow",20,Color_white,60,140)
 
         if String_TreeFadeColor == "Red":
-            DrawUIboxGreen(40,160,150,40,3)
+            DrawUIboxGreen(40,180,150,40,3)
         else:
-            DrawUIbox(40,160,150,40,3,3)
-        AddText("Fade red",20,Color_white,60,170)
+            DrawUIbox(40,180,150,40,3,3)
+        AddText("Fade red",20,Color_white,60,190)
 
         if String_TreeFadeColor == "Green":
-            DrawUIboxGreen(40,210,150,40,3)
+            DrawUIboxGreen(40,230,150,40,3)
         else:
-            DrawUIbox(40,210,150,40,3,3)
-        AddText("Fade green",20,Color_white,60,220)
+            DrawUIbox(40,230,150,40,3,3)
+        AddText("Fade green",20,Color_white,60,240)
 
         if String_TreeFadeColor == "Blue":
-            DrawUIboxGreen(40,260,150,40,3)
+            DrawUIboxGreen(40,280,150,40,3)
         else:
-            DrawUIbox(40,260,150,40,3,3)
-        AddText("Fade blue",20,Color_white,60,270)
+            DrawUIbox(40,280,150,40,3,3)
+        AddText("Fade blue",20,Color_white,60,290)
 
         if click[0] == 1 and ClickTimer >= ClickAllow:
-            if IsInRect(40,110,150,40,mx,my):
+            if IsInRect(40,130,150,40,mx,my):
                 ClickTimer = 0
                 if String_TreeFadeColor == "Rainbow":
                     String_TreeFadeColor = "NotSet"
                 else:
                     String_TreeFadeColor = "Rainbow"
-            elif IsInRect(40,160,150,40,mx,my):
+            elif IsInRect(40,180,150,40,mx,my):
                 ClickTimer = 0
                 if String_TreeFadeColor == "Red":
                     String_TreeFadeColor = "NotSet"
                 else:
                     String_TreeFadeColor = "Red"
-            elif IsInRect(40,210,150,40,mx,my):
+            elif IsInRect(40,230,150,40,mx,my):
                 ClickTimer = 0
                 if String_TreeFadeColor == "Green":
                     String_TreeFadeColor = "NotSet"
                 else:
                     String_TreeFadeColor = "Green"
-            elif IsInRect(40,260,150,40,mx,my):
+            elif IsInRect(40,280,150,40,mx,my):
                 ClickTimer = 0
                 if String_TreeFadeColor == "Blue":
                     String_TreeFadeColor = "NotSet"
                 else:
                     String_TreeFadeColor = "Blue"
 
-        AddText("Tree Type",30,Color_lightpurple,40,320)
+        AddText("Tree Type",30,Color_lightpurple,40,340)
 
         if "Random Angle" in Set_TreeType:
-            DrawUIboxGreen(40,370,150,40,3)
+            DrawUIboxGreen(40,390,150,40,3)
         else:
-            DrawUIbox(40,370,150,40,3,3)
-        AddText("Random Angle",20,Color_white,60,380)
+            DrawUIbox(40,390,150,40,3,3)
+        AddText("Random Angle",20,Color_white,60,400)
         if "Curve" in Set_TreeType:
-            DrawUIboxGreen(40,420,150,40,3)
+            DrawUIboxGreen(40,440,150,40,3)
         else:
-            DrawUIbox(40,420,150,40,3,3)
-        AddText("Curve",20,Color_white,60,430)
+            DrawUIbox(40,440,150,40,3,3)
+        AddText("Curve",20,Color_white,60,450)
         if "Random Lenght" in Set_TreeType:
-            DrawUIboxGreen(40,470,150,40,3)
+            DrawUIboxGreen(40,490,150,40,3)
         else:
-            DrawUIbox(40,470,150,40,3,3)
-        AddText("Random Lenght",20,Color_white,60,480)
+            DrawUIbox(40,490,150,40,3,3)
+        AddText("Random Lenght",20,Color_white,60,500)
         
         
 
         if click[0] == 1 and ClickTimer >= ClickAllow:
-            if IsInRect(40,370,150,40,mx,my):
+            if IsInRect(40,390,150,40,mx,my):
                 ClickTimer = 0
                 if "Random Angle" in Set_TreeType:
                     Set_TreeType.remove("Random Angle")
                 else:
                     Set_TreeType.add("Random Angle")
-            elif IsInRect(40,420,150,40,mx,my):
+            elif IsInRect(40,440,150,40,mx,my):
                 ClickTimer = 0
                 if "Curve" in Set_TreeType:
                     Set_TreeType.remove("Curve")
                 else:
                     Set_TreeType.add("Curve")
-            elif IsInRect(40,470,150,40,mx,my):
+            elif IsInRect(40,490,150,40,mx,my):
                 ClickTimer = 0
                 if "Random Lenght" in Set_TreeType:
                     Set_TreeType.remove("Random Lenght")
                 else:
                     Set_TreeType.add("Random Lenght")
-        AddText("Variable",30,Color_lightpurple,40,540)
-        DrawUIbox(40,590,150,40,3,3)
-        AddText("Split Angle : " + str(int(int_SplitAngle)),20,Color_white,50,600)
-        DrawDragBar(40,650,120,20,3)
-        DrawUIboxGreen(Xangle,645,10,30,3)
-        if IsInRect(41,650,119,20,mx,my) and click[0] == 1:
-            Xangle = mx
-            int_SplitAngle = int((Xangle - 40) * 3)/2
-        
-        DrawCircle(Color_purple,135,800,100)
-        DrawRect(Color_DarkGrey,0,800,300,900)
-        angletodraw = ReturnRadian(int_SplitAngle)
-        DrawLine(Color_white,135,800,135 + 100 * math.cos(angletodraw),800 - 100 * math.sin(angletodraw),2)
 
-        DrawUIbox(40,850,200,40,3,3) # 1 to 18
-        AddText("Recursion level : " + str(int(int_Recursion_level)),20,Color_white,50,860)
-        DrawDragBar(40,910,180,20,3)
-        DrawUIboxGreen(Xrecursion,905,10,30,3)
-        if IsInRect(40,910,180,20,mx,my) and click[0] == 1:
+
+
+        AddText("Variable",30,Color_lightpurple,1980,200)
+
+        
+        DrawUIbox(1980,250,150,40,3,3)
+        AddText("Split Angle : " + str(int(int_SplitAngle)),20,Color_white,1990,260)
+        DrawDragBar(1980,310,120,20,3)
+        DrawUIboxGreen(Xangle,305,10,30,3)
+        if IsInRect(1980,310,120,20,mx,my) and click[0] == 1:
+            Xangle = mx
+            int_SplitAngle = int((Xangle - 1980) * 3)/2
+        
+        DrawCircle(Color_purple,2075,460,100)
+        angletodraw = ReturnRadian(int_SplitAngle)
+        DrawLine(Color_white,2070,460,2070 + 100 * math.cos(angletodraw),460 - 100 * math.sin(angletodraw),2)
+        DrawRect(Color_DarkGrey,1970,460,2300,900)
+
+        DrawUIbox(1980,510,200,40,3,3) # 1 to 18
+        AddText("Recursion level : " + str(int(int_Recursion_level)),20,Color_white,1990,520)
+        DrawDragBar(1980,570,180,20,3)
+        DrawUIboxGreen(Xrecursion,565,10,30,3)
+        if IsInRect(1980,570,180,20,mx,my) and click[0] == 1:
             Xrecursion = mx
-            int_Recursion_level = int((Xrecursion - 40)/10)
+            int_Recursion_level = int((Xrecursion - 1980)/10)
             if int_Recursion_level < 1:
                 int_Recursion_level += 1
 
-        DrawUIbox(40,950,200,40,3,3)
-        AddText("lenght variation : " + str(int(int_NextLenght_percent)),20,Color_white,50,960)
-        DrawDragBar(40,1010,120,20,3)
-        DrawUIboxGreen(Xnextlenght,1005,10,30,3)
-        if IsInRect(40,1010,120,20,mx,my) and click[0] == 1:
+        DrawUIbox(1980,610,200,40,3,3)
+        AddText("lenght variation : " + str(int(int_NextLenght_percent)),20,Color_white,1990,620)
+        DrawDragBar(1980,670,120,20,3)
+        DrawUIboxGreen(Xnextlenght,665,10,30,3)
+        if IsInRect(1980,670,120,20,mx,my) and click[0] == 1:
             Xnextlenght = mx
-            int_NextLenght_percent = 20 + int((Xnextlenght - 40)/2)
+            int_NextLenght_percent = 20 + int((Xnextlenght - 1980)/2)
 
-        DrawUIbox(40,1050,200,40,3,3)
-        AddText("Start lenght : " + str(int(int_StartLenght)),20,Color_white,50,1060)
-        DrawDragBar(40,1110,180,20,3)
-        DrawUIboxGreen(Xstartlenght,1105,10,30,3)
-        if IsInRect(40,1110,180,20,mx,my) and click[0] == 1:
+        DrawUIbox(1980,710,200,40,3,3)
+        AddText("Start lenght : " + str(int(int_StartLenght)),20,Color_white,1990,720)
+        DrawDragBar(1980,770,180,20,3)
+        DrawUIboxGreen(Xstartlenght,765,10,30,3)
+        if IsInRect(1980,770,180,20,mx,my) and click[0] == 1:
             Xstartlenght = mx
-            int_StartLenght = 20 + int((Xstartlenght - 40))
+            int_StartLenght = 20 + int((Xstartlenght - 1980))
+
+
+
+
+        DrawUIbox(1980,100,200,50,5,5)
+        AddText("Generate",35,Color_lightpurple,2010,110)
+        if IsInRect(1980,100,200,50,mx,my) and click[0] == 1 and ClickTimer >= ClickAllow:
+            ClickTimer = 0
+            DrawTree = True
+
 
         
-
-
-        DrawLine(Color_cyan,285,0,285,ScreenHeight,30)
         ############################################################################################
 
         
